@@ -5,13 +5,13 @@ app = Flask(__name__)
 
 
 @app.route('/', methods=["POST"])
-def listening():
-    wkk = request.json
-    print(wkk)
+def listening():  # 监听功能
+    ev = request.json  # 避免request.json重复调用
+    print(ev)  # 参考gocq数据结构
 
     for each in process_func:
-        each(wkk)
-
+        each(ev)
+    # 加载API
     return '{}'
 
 
